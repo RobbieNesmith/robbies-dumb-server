@@ -15,7 +15,7 @@ def index():
 def list_items():
   conn = psycopg2.connect(DATABASE_URL, sslmode='require')
   cur = conn.cursor()
-  cur.execute("SELECT * FROM test")
+  cur.execute("SELECT * FROM test;")
   results = cur.fetchall()
   cur.close()
   conn.close()
@@ -27,7 +27,7 @@ def create_item():
   description = request.args.get("description")
   conn = psycopg2.connect(DATABASE_URL, sslmode='require')
   cur = conn.cursor()
-  cur.execute("INSERT INTO TEST (title, description) VALUES (%s, %s)", (title, description))
+  cur.execute("INSERT INTO test (title, description) VALUES (%s, %s);", (title, description))
   cur.close()
   conn.close()
   return f"added {title} {description}"
