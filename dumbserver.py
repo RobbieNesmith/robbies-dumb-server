@@ -28,6 +28,7 @@ def create_item():
   conn = psycopg2.connect(DATABASE_URL, sslmode='require')
   cur = conn.cursor()
   cur.execute("INSERT INTO test (title, description) VALUES (%s, %s);", (title, description))
+  conn.commit()
   cur.close()
   conn.close()
   return f"added {title} {description}"
