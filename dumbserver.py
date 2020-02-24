@@ -19,8 +19,4 @@ def list_items():
   results = cur.fetchall()
   cur.close()
   conn.close()
-  out = ""
-  for res in results:
-    out += " ".join(res)
-    out += "\n"
-  return out
+  return "\n".join([" ".join([str(col) for col in result]) for result in results])
