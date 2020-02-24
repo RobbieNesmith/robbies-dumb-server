@@ -15,12 +15,12 @@ def index():
 def list_items():
   conn = psycopg2.connect(DATABASE_URL, sslmode='require')
   cur = conn.cursor()
-	cur.execute("SELECT * FROM test")
+  cur.execute("SELECT * FROM test")
   results = cur.fetchall()
   cur.close()
   conn.close()
   out = ""
-	for res in results:
-		out += " ".join(res)
-		out += "\n"
+  for res in results:
+    out += " ".join(res)
+    out += "\n"
   return out
