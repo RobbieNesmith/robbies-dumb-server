@@ -21,10 +21,10 @@ def list_items():
   conn.close()
   return "\n".join([" ".join([str(col) for col in result]) for result in results])
 
-@app.route("/create")
+@app.route("/create", methods=["POST"])
 def create_item():
-  title = request.args.get("title")
-  description = request.args.get("description")
+  title = request.form.get("title")
+  description = request.form.get("description")
   conn = psycopg2.connect(DATABASE_URL, sslmode='require')
   cur = conn.cursor()
   cur.execute("INSERT INTO test (title, description) VALUES (%s, %s);", (title, description))
