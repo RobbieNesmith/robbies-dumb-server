@@ -30,3 +30,4 @@ def create_item():
   cur.execute("INSERT INTO TEST (title, description) VALUES (%s, %s)", (title, description))
   cur.close()
   conn.close()
+  return f"added {title} {description}"
