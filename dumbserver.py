@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask-cors import CORS
 
 import os
 import psycopg2
@@ -6,6 +7,8 @@ import psycopg2
 DATABASE_URL = os.environ["DATABASE_URL"]
 
 app = Flask(__name__)
+CORS(app)
+
 
 @app.route("/")
 def index():
